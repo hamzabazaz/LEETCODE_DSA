@@ -1,0 +1,29 @@
+class Solution {
+    public int divide(int dividend, int divisor) {
+
+        if(dividend==Integer.MIN_VALUE && divisor==-1){
+            return Integer.MAX_VALUE;
+        }
+
+        int sign=(divisor<0)^(dividend<0)?-1:1;
+
+        long a=Math.abs((long)dividend);
+        long b=Math.abs((long)divisor);
+        int res=0;
+
+        while(a>=b){
+            int count=0;
+            while(a>=(b<<(count+1))){
+                count++;
+            }
+            a-=(b<<count);
+            res+=(1<<count);
+        }
+     
+
+        return res*sign;
+
+       
+        
+    }
+}
