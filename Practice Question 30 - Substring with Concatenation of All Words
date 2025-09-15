@@ -1,0 +1,50 @@
+class Solution {
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> res = new ArrayList<>();
+        if (s == null || s.length() == 0 || words == null || words.length == 0) return res;
+
+        int wordLength = words[0].length();
+        int totalLength = words.length * wordLength;
+
+        // Word frequency map
+        Map<String, Integer> wordMap = new HashMap<>();
+        for (String word : words) {
+            wordMap.put(word, wordMap.getOrDefault(word, 0) + 1);
+        }
+
+        // Try all possible alignments
+        for (int i = 0; i < wordLength; i++) {
+            int left = i, count = 0;
+            Map<String, Integer> seen = new HashMap<>();
+
+            for (int right = i; right + wordLength <= s.length(); right += wordLength) {
+                String sub = s.substring(right, right + wordLength);
+
+                if (wordMap.containsKey(sub)) {
+                    seen.put(sub, seen.getOrDefault(sub, 0) + 1);
+                    count++;
+
+                    // If a word is used too many times, shrink from the left
+                    while (seen.get(sub) > wordMap.get(sub)) {
+                        String leftWord = s.substring(left, left + wordLength);
+                        seen.put(leftWord, seen.get(leftWord) - 1);
+                        left += wordLength;
+                        count--;
+                    }
+
+                    // If we matched all words
+                    if (count == words.length) {
+                        res.add(left);
+                    }
+                } else {
+                    // Reset if invalid word found
+                    seen.clear();
+                    count = 0;
+                    left = right + wordLength;
+                }
+            }
+        }
+
+        return res;
+    }
+}
