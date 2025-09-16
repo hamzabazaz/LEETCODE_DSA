@@ -1,0 +1,38 @@
+class Solution {
+    public int longestValidParentheses(String s) {
+        int open=0;
+        int close=0;
+        int ans=0;
+        if(s.length()<2 || s==null){
+            return 0;
+        }
+
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('){
+                open++;
+            }else{
+                close++;
+            }
+        }
+        if(open>close){
+            if(close*2>=open){
+                ans=open-close;
+            }else{
+                ans=close;
+            }
+        }else{
+            if(open*2>=close){
+                ans=close-open;
+            }else{
+                ans=open;;
+            }
+
+        }
+        return ans;
+    
+    }
+
+    }
+
+   
+  
