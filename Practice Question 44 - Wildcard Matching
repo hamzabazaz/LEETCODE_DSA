@@ -1,0 +1,48 @@
+class Solution {
+    public boolean isMatch(String s, String p) {
+        int slen = s.length();
+        int plen = p.length();
+        
+        // Use Boolean so null means "not computed yet"
+        Boolean[][] dp = new Boolean[slen + 1][plen + 1];
+        
+        return match(s, p, slen, plen, dp);
+    }
+
+    private boolean match(String s, String p, int sIndex, int pIndex, Boolean[][] dp) {
+        // Base case: both empty
+        if (sIndex == 0 && pIndex == 0) return true;
+        
+        // Pattern empty but string not
+        if (pIndex == 0) return false;
+        
+        // String empty but pattern not
+        if (sIndex == 0) {
+            for (int i = 0; i < pIndex; i++) {
+                if (p.charAt(i) != '*') return false;
+            }
+            return true;
+        }
+
+        // Check memo
+        if (dp[sIndex][pIndex] != null) return dp[sIndex][pIndex];
+
+        char sc = s.charAt(sIndex - 1);
+        char pc = p.charAt(pIndex - 1);
+
+        boolean res;
+
+        if (pc == '*') {
+            // '*' matches 0 characters or 1+ characters
+            res = match(s, p, sIndex - 1, pIndex, dp) || match(s, p, sIndex, pIndex - 1, dp);
+        } else if (pc == '?' || pc == sc) {
+            // Match single character
+            res = match(s, p, sIndex - 1, pIndex - 1, dp);
+        } else {
+            res = false;
+        }
+
+        dp[sIndex][pIndex] = res;
+        return res;
+    }
+}
