@@ -5,7 +5,6 @@ class Solution {
             zigzag[i]="";
         }
         int i=0;
-
     while(i<s.length()){
         for(int index=0;index<numRows && i<s.length();index++){
             zigzag[index]+=s.charAt(i++);
