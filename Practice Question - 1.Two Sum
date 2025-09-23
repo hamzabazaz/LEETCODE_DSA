@@ -12,7 +12,6 @@ class Solution {
         }
         return null;
     }
-
     public int[] reverse(int[]nums){
         int start=0;
         int end=nums.length-1;
