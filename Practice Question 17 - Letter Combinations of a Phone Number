@@ -2,7 +2,6 @@ class Solution {
     String[] digitToLetters = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
     public List<String> letterCombinations(String digits) {
 
-    
     List<String>combinations=new ArrayList<String>();
     if(digits==null||digits.length()==0){
         return combinations;
