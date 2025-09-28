@@ -12,7 +12,6 @@ class Solution {
             result.add(new ArrayList(combo));
             return;
         }
-
         for(int i=0;i<nums.length;i++){
             if(isUsed[i]==true) continue;
 
