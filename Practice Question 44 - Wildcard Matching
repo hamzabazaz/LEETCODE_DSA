@@ -29,7 +29,6 @@ class Solution {
 
         char sc = s.charAt(sIndex - 1);
         char pc = p.charAt(pIndex - 1);
-
         boolean res;
 
         if (pc == '*') {
