@@ -10,7 +10,6 @@ class Solution {
             res=(ps.length()>res.length())?ps:res;
         }
         return res;
-
 }
 
 public String getP(String s,int l,int r){
