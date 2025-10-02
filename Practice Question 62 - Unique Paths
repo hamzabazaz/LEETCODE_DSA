@@ -1,0 +1,28 @@
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[][] memo=new int[m][n];
+        for(int[] row:memo){
+            Arrays.fill(row,-1);
+        }
+
+        return unique(0,0,m,n,memo);
+       
+    }
+
+    private int unique(int row,int col,int m,int n,int[][]memo){
+        if(row>=m || col>=n) return 0;
+
+        if(row==m-1 && col==n-1) return 1;
+
+        if(memo[row][col]!=-1) return memo[row][col];
+
+        int rightPath=unique(row,col+1,m,n,memo);
+        int downPath=unique(row+1,col,m,n,memo);
+
+        memo[row][col]=downPath+rightPath;
+
+        return memo[row][col];
+    }
+
+    
+}
