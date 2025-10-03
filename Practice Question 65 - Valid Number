@@ -1,0 +1,51 @@
+class Solution {
+    public boolean isNumber(String s) {
+
+        boolean digitSeen=false;
+        int countPlusMinus=0;
+        boolean dotSeen=false;
+        boolean eseen=false;
+
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            if(Character.isDigit(ch)){
+                digitSeen=true;
+            }
+            else if(ch=='+' || ch=='-'){
+                if(countPlusMinus==2){
+                    return false;
+                }
+                if(i>0 &&(s.charAt(i-1)!='e' && s.charAt(i-1)!='E')){
+                    return false;
+                }
+                if(i==s.length()-1){
+                    return false;
+                }
+                countPlusMinus++;
+            }
+
+            else if(ch=='.'){
+                if(eseen||dotSeen){
+                    return false;
+                }
+                if(i==s.length()-1 && !digitSeen){
+                    return false;
+                }
+                dotSeen=true;
+            }
+
+            else if(ch=='e'||ch=='E'){
+                if(eseen||!digitSeen ||i==s.length()-1){
+                    return false;
+                }
+                eseen=true;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+
+        
+    }
+}
