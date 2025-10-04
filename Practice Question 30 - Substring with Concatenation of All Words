@@ -5,7 +5,6 @@ class Solution {
 
         int wordLength = words[0].length();
         int totalLength = words.length * wordLength;
-
         // Word frequency map
         Map<String, Integer> wordMap = new HashMap<>();
         for (String word : words) {
