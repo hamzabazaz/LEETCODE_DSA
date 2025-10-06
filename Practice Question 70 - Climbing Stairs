@@ -1,0 +1,21 @@
+class Solution {
+    public int climbStairs(int n) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        return climb(n,map);
+    }
+
+
+    private int climb(int n, HashMap<Integer,Integer> map){
+        if(n==1){
+            return 1;
+        }
+        if(n==2){
+            return 2;
+        }
+
+        if(!map.containsKey(n)){
+            map.put(n,(climb(n-1,map)+climb(n-2,map)));
+        }
+        return map.get(n);
+    }
+}
