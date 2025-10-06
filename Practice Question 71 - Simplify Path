@@ -1,0 +1,22 @@
+class Solution {
+    public String simplifyPath(String path) {
+       String[] words=path.split("/+");
+       Stack<String> res=new Stack<>();
+
+       for(String word:words){
+        if(word.equals("")||word.equals("."))continue;
+        if(word.equals("..")){
+            if(!res.isEmpty()){
+                res.pop();
+            }
+        }else{
+            res.push(word);
+        }
+       }
+       StringBuilder sb=new StringBuilder();
+       for(String s:res){
+        sb.append("/").append(s);
+       }
+       return sb.length()>0?sb.toString():"/";
+        }
+}
