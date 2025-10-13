@@ -1,0 +1,42 @@
+class Solution {
+    public int maximalRectangle(char[][] matrix) {
+        if(matrix.length==0){
+            return -1;
+        }
+
+        int[] heights=new int[matrix[0].length];
+        int largest=0;
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                int val=matrix[i][j]-'0';
+                if(matrix[i][j]=='0'){
+                    heights[j]=0;
+                }else{
+                    heights[j]+=val;
+                }
+            }
+            int maxArea=largestRectangleArea(heights);
+            if(largest<maxArea){
+                largest=maxArea;
+            }
+        }
+        return largest;
+    }
+
+    public int largestRectangleArea(int[] heights) {
+        Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        int n = heights.length;
+
+        for (int i = 0; i <= n; i++) {
+            int h = (i == n) ? 0 : heights[i];
+            while (!stack.isEmpty() && h < heights[stack.peek()]) {
+                int height = heights[stack.pop()];
+                int width = stack.isEmpty() ? i : i - stack.peek() - 1;
+                maxArea = Math.max(maxArea, height * width);
+            }
+            stack.push(i);
+        }
+        return maxArea;
+    }
+}
