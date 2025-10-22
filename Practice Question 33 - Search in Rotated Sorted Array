@@ -7,7 +7,6 @@ class Solution {
         while(si<=ei){
             int mid=si+(ei-si)/2;
             if(nums[mid]==target) return mid;
-
             if(nums[si]<=nums[mid]){
                 if(nums[si]<=target && target<nums[mid]){
                      ei=mid-1;
