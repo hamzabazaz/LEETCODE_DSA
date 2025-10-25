@@ -13,9 +13,7 @@ class Solution {
             } else {
                 end = mid - 1;   // move left
             }
-        }
-
-        
+        }  
         return start;
     }
 }
