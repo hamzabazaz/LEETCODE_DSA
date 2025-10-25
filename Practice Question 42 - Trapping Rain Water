@@ -8,7 +8,6 @@ class Solution {
         int rightMax=height[right];
 
         while(left<right){
-            
             if(height[left]<height[right]){
                 leftMax=Math.max(leftMax,height[left]);
                 if(leftMax-height[left]>0){
