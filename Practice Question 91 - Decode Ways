@@ -4,9 +4,7 @@ class Solution {
         if (s == null || s.length() == 0 || s.charAt(0) == '0') return 0;
         int[] memo=new int[s.length()];
         Arrays.fill(memo,-1);
-        return backtrack(s,0,memo);
-        
-        
+        return backtrack(s,0,memo);   
     }
 
     private int backtrack(String s,int index,int[]memo){
