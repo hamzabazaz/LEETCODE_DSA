@@ -27,8 +27,6 @@ class Solution {
 
             for(int i=0;i<size;i++){
                 TreeNode node = queue.poll(); 
-                
-
                 if(l%2!=0){
                     level.addFirst(node.val);
                 }else{
