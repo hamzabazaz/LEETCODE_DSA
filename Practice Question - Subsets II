@@ -6,7 +6,6 @@ class Solution {
         return res;
     }
     private void backtrack(int[] nums,int index,List<List<Integer>> res,List<Integer> temp){
-       
               res.add(new ArrayList(temp));
         for(int i=index;i<nums.length;i++){
             if (i > index && nums[i] == nums[i - 1]) continue;
