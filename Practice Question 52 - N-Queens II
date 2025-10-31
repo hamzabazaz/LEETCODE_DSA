@@ -12,8 +12,6 @@ class Solution {
         nQueens(board,0,queens);
         return count;   
     }
-
-
     private void nQueens(char[][]board,int r,List<int[]> queens){
         if(queens.size()==board.length){
            count++;
