@@ -20,7 +20,6 @@ class Solution {
         Queue<TreeNode> queue=new LinkedList<>();
         queue.add(root);
         int l=0;
-
         while(!queue.isEmpty()){
             int size=queue.size();
             List<Integer> level=new ArrayList<>();
