@@ -8,7 +8,6 @@ class Solution {
         
         return match(s, p, slen, plen, dp);
     }
-
     private boolean match(String s, String p, int sIndex, int pIndex, Boolean[][] dp) {
         // Base case: both empty
         if (sIndex == 0 && pIndex == 0) return true;
