@@ -22,7 +22,6 @@ class Solution {
             }
             return true;
         }
-
         // Check memo
         if (dp[sIndex][pIndex] != null) return dp[sIndex][pIndex];
 
