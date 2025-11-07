@@ -20,7 +20,6 @@ class Solution {
             backtrack(result,combo,nums,isUsed);
             isUsed[i]=false;
             combo.remove(combo.size()-1);
-            
         }
       
         
