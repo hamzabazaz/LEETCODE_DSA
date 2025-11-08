@@ -3,10 +3,7 @@ class Solution {
 
         if (head == null || head.next == null) return head;
         ListNode dummy=new ListNode(0);
-        ListNode current=dummy;
-
-        
-
+        ListNode current=dummy;    
         while(head!=null && head.next!=null){
             ListNode first=head;
             ListNode second=head.next;
