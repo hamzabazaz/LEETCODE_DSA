@@ -6,7 +6,6 @@ class Solution {
 
         return minPath(grid,m-1,n-1,memo);
     }
-
     private  int minPath(int[][]grid,int row,int col,Integer[][]memo){
         if(row==-1||col==-1) return Integer.MAX_VALUE;
         if(row==0&&col==0) return grid[0][0];
