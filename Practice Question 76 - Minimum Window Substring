@@ -8,7 +8,6 @@ class Solution {
         for(char ch: t.toCharArray()){
             map.put(ch,map.getOrDefault(ch,0)+1);
         }
-        
         int count=0;
         int left=0;
         int right=0;
