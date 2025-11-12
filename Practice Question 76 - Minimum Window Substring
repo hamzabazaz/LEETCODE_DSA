@@ -13,7 +13,6 @@ class Solution {
         int right=0;
         int sIndex=-1;
         int minLen=Integer.MAX_VALUE;
-
         while(right<n){
             char sChar=s.charAt(right);
             if(map.containsKey(sChar)){
