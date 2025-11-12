@@ -40,7 +40,6 @@ class Solution {
 
             }
             right=right+1;
-
         }
 
         return sIndex==-1?"":s.substring(sIndex,sIndex+minLen);
