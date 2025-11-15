@@ -6,7 +6,6 @@ class Solution {
             heap.add(node);
         }
        }
-
        ListNode dummy=new ListNode();
        ListNode current=dummy;
 
@@ -19,8 +18,6 @@ class Solution {
             heap.add(node.next);
         }
        }
-
        return dummy.next;
-
 }
 }
