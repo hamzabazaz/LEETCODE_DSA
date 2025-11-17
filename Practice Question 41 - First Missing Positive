@@ -25,7 +25,6 @@ class Solution {
                 nums[a]=-Math.abs(nums[a]);
             }
         }
-
         for(int i=1;i<nums.length;i++){
             if(nums[i]>0){
                 return i;
