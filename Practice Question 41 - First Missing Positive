@@ -33,7 +33,6 @@ class Solution {
         if(nums[0]>0){
             return n;
         }
-
         return n+1; 
     }
 }
