@@ -23,7 +23,6 @@ class Solution {
     }
     return build(postorder,0,inorder.length-1);
 }
-
 private TreeNode build(int[]postorder,int inStart,int inEnd){
     if(inStart>inEnd) return null;
 
