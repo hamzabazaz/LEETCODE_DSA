@@ -30,7 +30,6 @@ private TreeNode build(int[]postorder,int inStart,int inEnd){
     TreeNode root=new TreeNode(rootVal);
 
     int mid=inMap.get(rootVal);
-
     root.right=build(postorder,mid+1,inEnd);
     root.left=build(postorder,inStart,mid-1);
     return root;
