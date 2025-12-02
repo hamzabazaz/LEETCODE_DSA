@@ -19,7 +19,6 @@ class Solution {
             a-=(b<<count);
             res+=(1<<count);
         }
-     
 
         return res*sign;
 
