@@ -1,0 +1,19 @@
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> firstRow=new ArrayList<>();
+       
+        firstRow.add(1);
+       
+
+        for(int i=1;i<=rowIndex;i++){
+            firstRow.add(1);
+
+            for(int j=i-1;j>0;j--){
+                firstRow.set(j,firstRow.get(j)+firstRow.get(j-1));
+            }
+        }
+        return firstRow;
+        
+    }
+        
+    }
