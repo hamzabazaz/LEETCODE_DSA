@@ -1,0 +1,17 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int buyPrice1=Integer.MAX_VALUE;
+        int profit1=0;
+        int buyPrice2=Integer.MAX_VALUE;
+        int profit2=0;
+
+        for(int price:prices){
+            buyPrice1=Math.min(buyPrice1,price);
+            profit1=Math.max(profit1,price-buyPrice1);
+            buyPrice2=Math.min(buyPrice2,price-profit1);
+            profit2=Math.max(profit2,price-buyPrice2);
+        }
+        return profit2;
+        
+    }
+}
