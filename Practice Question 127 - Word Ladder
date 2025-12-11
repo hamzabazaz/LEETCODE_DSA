@@ -1,0 +1,55 @@
+class Solution {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        // Convert list to set for fast lookup
+        Set<String> wordSet = new HashSet<>(wordList);
+        if (!wordSet.contains(endWord)) return 0;
+
+        // Preprocess: Create the pattern → wordList mapping
+        Map<String, List<String>> patternMap = new HashMap<>();
+        int L = beginWord.length();
+
+        for (String word : wordSet) {
+            for (int i = 0; i < L; i++) {
+                String pattern = word.substring(0, i) + "*" + word.substring(i + 1);
+                patternMap.computeIfAbsent(pattern, k -> new ArrayList<>()).add(word);
+            }
+        }
+
+        // BFS queue: store (currentWord, level)
+        Queue<String> queue = new LinkedList<>();
+        queue.add(beginWord);
+
+        Set<String> visited = new HashSet<>();
+        visited.add(beginWord);
+
+        int steps = 1;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+
+            for (int s = 0; s < size; s++) {
+                String word = queue.poll();
+
+                // Try all possible patterns for current word
+                for (int i = 0; i < L; i++) {
+                    String pattern = word.substring(0, i) + "*" + word.substring(i + 1);
+
+                    // For each matching neighbor word
+                    for (String neighbor : patternMap.getOrDefault(pattern, Collections.emptyList())) {
+                        if (neighbor.equals(endWord)) {
+                            return steps + 1;
+                        }
+
+                        if (!visited.contains(neighbor)) {
+                            visited.add(neighbor);
+                            queue.add(neighbor);
+                        }
+                    }
+                }
+            }
+            steps++;
+        }
+
+        return 0;
+    }
+}
