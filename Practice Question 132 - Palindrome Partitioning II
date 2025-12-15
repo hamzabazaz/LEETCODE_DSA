@@ -1,0 +1,35 @@
+class Solution {
+    public int minCut(String s) {
+        
+    int n = s.length();
+        if (n <= 1) return 0;
+
+        int[] cut = new int[n];
+        // Worst case: cut between every character => i cuts for prefix [0..i]
+        for (int i = 0; i < n; i++) cut[i] = i;
+
+        // Expand around centers (odd-length palindromes)
+        for (int center = 0; center < n; center++) {
+            expandAndUpdate(s, center, center, cut);       // odd
+            expandAndUpdate(s, center, center + 1, cut);   // even
+        }
+
+        return cut[n - 1];
+    }
+
+    // Expand around (l, r) and update cuts whenever s[l..r] is palindrome
+    private void expandAndUpdate(String s, int l, int r, int[] cut) {
+        int n = s.length();
+        while (l >= 0 && r < n && s.charAt(l) == s.charAt(r)) {
+            if (l == 0) {
+                cut[r] = 0; // whole prefix [0..r] is palindrome
+            } else {
+                cut[r] = Math.min(cut[r], cut[l - 1] + 1);
+            }
+            l--;
+            r++;
+        }
+    }
+
+        
+    }
