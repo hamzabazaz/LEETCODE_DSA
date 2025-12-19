@@ -1,0 +1,51 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+*/
+
+class Solution {
+    public Node cloneGraph(Node node) {
+        if(node==null){
+            return null;
+        }
+       Map<Node,Node>map=new HashMap<>();
+
+       Queue<Node>queue=new LinkedList<>();
+       Node newNode=new Node();
+       newNode.val=node.val;
+       map.put(node,newNode);
+       queue.add(node);
+       while(!queue.isEmpty()){
+        int size=queue.size();
+        while(size-->0){
+            Node originalNode=queue.remove();
+            for(Node child:originalNode.neighbors){
+                if(!map.containsKey(child)){
+                    Node currNode=new Node();
+                    currNode.val=child.val;
+                    queue.add(child);
+                    map.put(child,currNode);
+                }
+                Node newLinkedNode=map.get(originalNode);
+                newLinkedNode.neighbors.add(map.get(child));
+            }
+        }
+       }
+       return map.get(node);
+    }
+    }
