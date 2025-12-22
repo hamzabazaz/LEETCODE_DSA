@@ -9,7 +9,6 @@ class Solution {
     backtrack(combinations,digits,"",0);
     return combinations;
     }
-
     private void backtrack(List<String> combinations, String digits, String currentCombination, int index){
         if(index==digits.length()){
             combinations.add(currentCombination);
