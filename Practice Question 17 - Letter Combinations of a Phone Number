@@ -18,6 +18,5 @@ class Solution {
          for (char letter : letters.toCharArray()) {
             backtrack(combinations, digits, currentCombination + letter, index + 1);
         }
-
     }
 }
