@@ -35,7 +35,6 @@ class Solution {
                 if (node.right != null) queue.add(node.right);  
             }
            l++;
-
             res.add(level);
         }
         return res;
