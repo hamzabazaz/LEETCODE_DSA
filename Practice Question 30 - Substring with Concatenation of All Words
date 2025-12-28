@@ -10,7 +10,6 @@ class Solution {
         for (String word : words) {
             wordMap.put(word, wordMap.getOrDefault(word, 0) + 1);
         }
-
         // Try all possible alignments
         for (int i = 0; i < wordLength; i++) {
             int left = i, count = 0;
