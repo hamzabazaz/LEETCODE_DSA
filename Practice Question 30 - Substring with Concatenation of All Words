@@ -29,7 +29,6 @@ class Solution {
                         left += wordLength;
                         count--;
                     }
-
                     // If we matched all words
                     if (count == words.length) {
                         res.add(left);
