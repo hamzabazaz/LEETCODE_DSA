@@ -10,8 +10,6 @@ class Solution {
         }
         return result;
     }
-
-
     private String helper(String s){
         StringBuilder sb=new StringBuilder();
         int count=1;
