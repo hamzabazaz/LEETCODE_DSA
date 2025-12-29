@@ -25,7 +25,6 @@ class Solution {
                 count=1;
             }
         }
-
         sb.append(count).append(prev);
         return sb.toString();
     }
