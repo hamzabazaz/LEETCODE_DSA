@@ -18,7 +18,6 @@ class Solution {
             if(first.val<=second.val){
                 current.next=first;
                 first=first.next;
-               
             }else{
                 current.next=second;
                 second=second.next;
