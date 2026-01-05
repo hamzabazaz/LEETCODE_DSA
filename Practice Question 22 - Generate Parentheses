@@ -5,7 +5,6 @@ class Solution {
             res.add(val);
             return;
         }
-
         if(open<n){
             generate(res,n,open+1,close,val+"(");
         }
