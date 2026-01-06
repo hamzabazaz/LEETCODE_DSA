@@ -1,0 +1,27 @@
+class Solution {
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        List<String>ans=new ArrayList<>();
+        solve(0,0,s,new ArrayList<>(),ans,new HashSet<>(wordDict));
+        return ans;
+    }
+
+    public void solve(int start, int end, String s,List<String>curr,List<String>ans,HashSet<String>words){
+        if(end==s.length()-1){
+            if(words.contains(s.substring(start,end+1))){
+                curr.add(s.substring(start,end+1));
+                ans.add(String.join(" ",curr));
+                curr.remove(curr.size()-1);
+            }
+            return;
+        }
+        //pick
+        if(words.contains(s.substring(start,end+1))){
+            curr.add(s.substring(start,end+1));
+           solve(end+1,end+1,s,curr,ans,words);
+            curr.remove(curr.size()-1);
+        }
+
+        //not pick
+        solve(start,end+1,s,curr,ans,words);
+    }
+}
