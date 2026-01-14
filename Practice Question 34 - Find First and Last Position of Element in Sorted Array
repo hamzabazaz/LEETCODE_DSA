@@ -6,7 +6,6 @@ class Solution {
        return new int[]{first,second};
         
     }
-
     private int findFirst(int[] nums,int target){
         int left=0;
         int right=nums.length-1;
