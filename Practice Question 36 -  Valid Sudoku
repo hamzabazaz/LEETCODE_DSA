@@ -13,7 +13,6 @@ for(int i=0;i<9;i++){
                 }
             }
         }
-
         for(int row=0;row<9;row+=3){
             for(int col=0;col<9;col+=3){
                 if(!valid(board,row,col)){
