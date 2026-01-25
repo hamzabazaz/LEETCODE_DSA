@@ -8,7 +8,6 @@ class Solution {
         return nums[left]; 
     }
         int mid=left+(right-left)/2;
-
         int leftSum=helper(nums,left,mid);
         int rightSum=helper(nums,mid+1,right);
         int crossMax=maxCross(nums,left,mid,right);
