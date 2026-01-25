@@ -3,7 +3,6 @@ class Solution {
         return helper(nums,0,nums.length-1);
         
     }
-
     private int helper(int[] nums, int left,int right){
          if (left == right) {
         return nums[left]; 
