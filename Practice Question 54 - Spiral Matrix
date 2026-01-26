@@ -9,7 +9,6 @@ class Solution {
       int colEnd=matrix[0].length-1;
 
       while(rowBegin<=rowEnd && colBegin<=colEnd){
-
         for(int i=colBegin;i<=colEnd;i++){
             result.add(matrix[rowBegin][i]);
         }
