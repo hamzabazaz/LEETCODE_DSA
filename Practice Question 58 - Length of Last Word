@@ -13,7 +13,7 @@ class Solution {
             if(s.charAt(i)!=' ') count++;
             else{
                  break;
-            }
+      }
            
         }
         return count;
