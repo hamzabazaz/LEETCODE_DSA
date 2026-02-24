@@ -14,7 +14,6 @@ class Solution {
         return result;
         
     }
-
     private void nQueens(char[][]board,int r,List<int[]> queens){
         if(queens.size()==board.length){
             List<String> rows=new ArrayList();
