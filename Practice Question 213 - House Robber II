@@ -1,0 +1,25 @@
+class Solution {
+    public int rob(int[] nums) {
+        if(nums.length==1)return nums[0];
+        return Math.max(robberLinear(nums,0,nums.length-2),robberLinear(nums,1,nums.length-1));
+    }
+
+    private int robberLinear(int[]nums,int start,int end){
+        int dp[]=new int[nums.length];
+        Arrays.fill(dp,-1);
+        return helper(nums,start,end,dp);
+    }
+
+    private int helper(int[]nums,int start,int end,int[]dp){
+        if(start>end) return 0;
+        if(dp[start]!=-1)return dp[start];
+        
+            int s1=nums[start] + helper(nums, start + 2, end, dp);
+            int s2=helper(nums, start + 1, end, dp);
+
+            return dp[start]=Math.max(s1,s2);
+    }
+
+    
+        
+}
