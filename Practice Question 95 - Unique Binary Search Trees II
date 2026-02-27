@@ -17,7 +17,6 @@ class Solution {
     public List<TreeNode> generateTrees(int n) {
         return helper(1,n);
     }
-
     private List<TreeNode> helper(int st,int end){
         List<TreeNode> res=new ArrayList<>();
         if(st>end){
