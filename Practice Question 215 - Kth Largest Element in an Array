@@ -1,0 +1,39 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        List<Integer> number=new ArrayList<>();
+        for(int num:nums){
+            number.add(num);
+        }
+
+        return quickSort(number,k);
+    }
+
+    private int quickSort(List<Integer> num,int k){
+        if(num.size()==1)return num.get(0);
+
+        int partitionIndex=new Random().nextInt(num.size());
+        int pivot=num.get(partitionIndex);
+
+        List<Integer>less=new ArrayList<>();
+        List<Integer>equal=new ArrayList<>();
+        List<Integer>greater=new ArrayList<>();
+
+        for(int n:num){
+            if(n<pivot){
+                less.add(n);
+            }else if(n>pivot){
+                greater.add(n);
+            }else{
+                equal.add(n);
+            }
+        }
+
+        if(k<=greater.size()){
+            return quickSort(greater,k);
+        }
+        if(equal.size()+greater.size()<k){
+            return quickSort(less,k-equal.size()-greater.size());
+        }
+        return pivot;
+    }
+}
