@@ -18,7 +18,6 @@ class Solution {
         tail=tail.next;
         length++;
      }
-
     tail.next=head;
     k=k%length;
     int steps=length-k;
