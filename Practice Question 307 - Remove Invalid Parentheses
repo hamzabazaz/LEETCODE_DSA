@@ -1,0 +1,59 @@
+ class Solution {
+
+    public List<String> removeInvalidParentheses(String s) {
+        HashSet<String> visited = new HashSet<>();
+        List<String> ans = new ArrayList<>();
+
+        int minRemovals = findRemovals(s);
+
+        solve(s, ans, visited, minRemovals);
+
+        return ans;
+    }
+
+    private void solve(String s, List<String> ans,
+                       HashSet<String> visited, int removals) {
+
+        if (visited.contains(s)) return;
+
+        visited.add(s);
+
+        if (removals == 0) {
+            if (findRemovals(s) == 0) {
+                ans.add(s);
+            }
+            return;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            String left = s.substring(0, i);
+            String right = s.substring(i + 1);
+
+            String join = left + right;
+
+            solve(join, ans, visited, removals - 1);
+        }
+    }
+
+    private int findRemovals(String s) {
+        Stack<Character> st = new Stack<>();
+
+        for (char ch : s.toCharArray()) {
+
+            if (ch == '(') {
+                st.push(ch);
+            }
+
+            else if (ch == ')') {
+
+                if (!st.isEmpty() && st.peek() == '(') {
+                    st.pop();
+                } else {
+                    st.push(ch);
+                }
+            }
+        }
+
+        return st.size();
+    }
+}
