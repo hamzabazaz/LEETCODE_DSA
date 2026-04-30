@@ -1,0 +1,50 @@
+class Solution {
+    public boolean isAdditiveNumber(String num) {
+        int n = num.length();
+
+        // choose first number
+        for (int i = 1; i <= n / 2; i++) {
+
+            // leading zero check
+            if (num.charAt(0) == '0' && i > 1) break;
+
+            long first = Long.parseLong(num.substring(0, i));
+
+            // choose second number
+            for (int j = 1; Math.max(i, j) <= n - i - j; j++) {
+
+                // leading zero check
+                if (num.charAt(i) == '0' && j > 1) break;
+
+                long second = Long.parseLong(num.substring(i, i + j));
+
+                if (check(num, i + j, first, second)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private boolean check(String num, int start, long a, long b) {
+
+        while (start < num.length()) {
+
+            long sum = a + b;
+            String sumStr = String.valueOf(sum);
+
+            // next digits must match sum
+            if (!num.startsWith(sumStr, start)) {
+                return false;
+            }
+
+            start += sumStr.length();
+
+            a = b;
+            b = sum;
+        }
+
+        return true;
+    }
+        }
