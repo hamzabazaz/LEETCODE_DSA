@@ -1,0 +1,32 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+
+        int len = prices.length;
+
+        if (len < 2) return 0;
+
+        int[] buy = new int[len];
+        int[] profit = new int[len];
+
+        buy[0] = -prices[0];
+        buy[1] = -Math.min(prices[0], prices[1]);
+
+        profit[0] = 0;
+        profit[1] = Math.max(0, prices[1] - prices[0]);
+
+        for (int i = 2; i < len; i++) {
+
+            buy[i] = Math.max(
+                        buy[i - 1],
+                        profit[i - 2] - prices[i]
+                     );
+
+            profit[i] = Math.max(
+                           profit[i - 1],
+                           buy[i - 1] + prices[i]
+                        );
+        }
+
+        return profit[len - 1];
+    }
+}
