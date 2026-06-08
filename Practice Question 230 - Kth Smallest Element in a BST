@@ -6,7 +6,6 @@ class Solution {
         inorder(root, k);
         return result;
     }
-
     private void inorder(TreeNode root, int k) {
         if(root == null) return;
 
