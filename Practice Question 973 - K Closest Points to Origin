@@ -1,0 +1,43 @@
+class Solution {
+
+    public int distance(int[] point){
+        return point[0]*point[0]+point[1]*point[1];
+    }
+    public int[][] kClosest(int[][] points, int k) {
+        int left=0;
+        int right=points.length-1;
+        while(left<=right){
+           int pivotIndex = left + new Random().nextInt(right - left + 1);
+           int pivot = distance(points[pivotIndex]);
+           int i=left;
+           int j=right;
+            while(i<=j){
+                while(distance(points[i])<pivot){
+                    i++;
+                }
+                while(distance(points[j])>pivot){
+                    j--;
+                }
+                if(i<=j){
+                int[] temp=points[i];
+                points[i]=points[j];
+                points[j]=temp;
+                i++;
+                j--;
+            }
+            }
+            if(k-1<=j){
+                right=j;
+            }else if(k+1>=i){
+                left=i;
+            }else{
+                break;
+            }
+        }
+        int[][] res=new int[k][2];
+        for(int i=0;i<k;i++){
+            res[i]=points[i];
+        }
+        return res;
+    }
+}
