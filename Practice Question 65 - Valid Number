@@ -1,6 +1,5 @@
 class Solution {
     public boolean isNumber(String s) {
-
         boolean digitSeen=false;
         int countPlusMinus=0;
         boolean dotSeen=false;
